@@ -1,5 +1,5 @@
--{% raw -%}
 ---
+{% raw -%}
 - name: Create
   hosts: localhost
   connection: local
@@ -115,4 +115,4 @@
         delay: 10
         timeout: 320
       with_items: "{{ lookup('file', molecule_instance_config) | from_yaml }}"
--{%- endraw %}
+{%- endraw %}
