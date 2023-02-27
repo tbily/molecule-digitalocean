@@ -1,15 +1,19 @@
 ---
-{% raw -%}
+-{% raw -%}
 - name: Destroy
   hosts: localhost
   connection: local
   gather_facts: false
   no_log: "{{ molecule_no_log }}"
+  vars:
+      token: "{{ lookup('env','DO_OAUTH_TOKEN') }}"
   tasks:
+    - debug:
+        var: token
     - block:
         - name: Populate instance config
           set_fact:
-            instance_conf: "{{ lookup('file', molecule_instance_config) | molecule_from_yaml }}"
+            instance_conf: "{{ lookup('file', molecule_instance_config) | from_yaml }}"
             skip_instances: false
       rescue:
         - name: Populate instance config when file missing
@@ -21,8 +25,10 @@
       block:
         - name: Destroy molecule instance(s)
           community.digitalocean.digital_ocean_droplet:
+            oauth_token: "{{ lookup('env','DO_OAUTH_TOKEN') }}"
             name: "{{ item.instance }}"
             id: "{{ item.droplet_id }}"
+            unique_name: true
             state: absent
           register: server
           with_items: "{{ instance_conf }}"
@@ -39,6 +45,7 @@
 
         - name: Delete remote keypair
           community.digitalocean.digital_ocean_sshkey:
+            oauth_token: "{{ lookup('env','DO_OAUTH_TOKEN') }}"
             fingerprint: "{{ instance_conf[0].remote_keypair_id }}"
             state: absent
           when: instance_conf
@@ -50,8 +57,7 @@
 
         - name: Dump instance config
           copy:
-            content: "{{ instance_conf | molecule_to_yaml | molecule_header }}"
+            content: "{{ instance_conf | to_yaml }}"
             dest: "{{ molecule_instance_config }}"
           when: server.changed | bool
-
-{%- endraw %}
+-{%- endraw %}
