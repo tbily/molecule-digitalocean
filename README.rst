@@ -1,10 +1,6 @@
 ****************************
 Molecule DigitalOcean Plugin
 ****************************
-.. image:: https://img.shields.io/badge/Mailing%20lists-Ansible-orange.svg
-   :target: https://docs.ansible.com/ansible/latest/community/communication.html#mailing-list-information
-   :alt: Ansible mailing lists
-
 .. image:: https://img.shields.io/badge/license-MIT-brightgreen.svg
    :target: LICENSE
    :alt: Repository License
