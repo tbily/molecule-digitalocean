@@ -1,22 +1,6 @@
 ****************************
 Molecule DigitalOcean Plugin
 ****************************
-
-.. image:: https://badge.fury.io/py/molecule-digitalocean.svg
-   :target: https://badge.fury.io/py/molecule-digitalocean
-   :alt: PyPI Package
-
-.. image:: https://img.shields.io/travis/com/pycontribs/molecule-digitalocean/master.svg?label=Linux%20builds%20%40%20Travis%20CI
-   :target: https://travis-ci.com/pycontribs/molecule-digitalocean
-
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-   :target: https://github.com/python/black
-   :alt: Python Black Code Style
-
-.. image:: https://img.shields.io/badge/Code%20of%20Conduct-Ansible-silver.svg
-   :target: https://docs.ansible.com/ansible/latest/community/code_of_conduct.html
-   :alt: Ansible Code of Conduct
-
 .. image:: https://img.shields.io/badge/Mailing%20lists-Ansible-orange.svg
    :target: https://docs.ansible.com/ansible/latest/community/communication.html#mailing-list-information
    :alt: Ansible mailing lists
